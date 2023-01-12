@@ -7,16 +7,38 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - label: "Home"
-        name: "home"
-        file: "content/home.md"
+      - label: "Méthodes"
+        name: "methodes"
+        file: "content/methodes.md"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Publish Date", name: "date", widget: "datetime" }
           - { label: "Body", name: "body", widget: "markdown" }
-          - label: "Cats"
-            name: "cats"
-            widget: list
-            fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
+
+      - label: "Domaines"
+        name: "areas"
+        file: "content/areas.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - label: "Pourquoi nous"
+        name: "whyus"
+        file: "content/whyus.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - label: "Solution"
+        name: "solution"
+        file: "content/solution.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - label: "Contactez nous"
+        name: "contactus"
+        file: "content/contactus.md"
+        fields:
+          - { label: "Adress", name: "adress", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
