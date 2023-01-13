@@ -51,19 +51,24 @@ const Logo = styled.img`
   height: 80%;
 `;
 
-const icons = [
-  "https://upload.wikimedia.org/wikipedia/commons/6/6e/Snvi_logo.png",
-  "https://www.enmtp.com/wp-content/themes/Final2/images/object623621369.png",
-  "https://www.mdn.dz/site_principal/images/mdn.png",
-  "https://sonatrach.com/img/header/sonatrach.png",
-  "https://rhino-files.s3.amazonaws.com/uploads/cAw4edgPnRd7z5xTYTjbWDEkZ.png",
-  "https://farissiabtp.dz/img/partenaires/anbt.png",
-  "https://elmouchir.caci.dz/assets/images/entreprise/1666015450.jpg",
-  "https://gicep-dz.com/html/ext/assets/img/skikda.png",
-  "https://elmouchir.caci.dz/assets/images/entreprise/1666015450.jpg",
-];
-
 const Companies = ({ size, onStartPerformance, onEndPerformance }) => {
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((data) => setCountries(data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const selected = new Set();
+  while (selected.size < 25 && selected.size < countries.length) {
+    const index = Math.floor(Math.random() * 250);
+    const country = countries[index];
+    selected.add(country);
+  }
+  const icons = Array.from(selected).map((country) => country.flags.png);
+
   const [key, setKey] = useState(nanoid());
 
   useEffect(() => {
@@ -88,18 +93,19 @@ const Companies = ({ size, onStartPerformance, onEndPerformance }) => {
       <div className="max-w-xl mt-10 md:mx-auto sm:text-center lg:max-w-2xl md:mt-12">
         <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
           <span className="relative inline-block">
-            
-            <span className="relative">{"P"}</span>
+            <span className="relative">{"D"}</span>
           </span>
           {""}
-          rincipaux partenaires
+          estinations populaires
         </h2>
         <p className="text-base text-gray-700 md:text-lg">
-          Principaux partenaires sont des partenaires stratégiques qui
-          fournissent des produits, services et/ou conseils à une organisation
-          afin de l&#39;aider à atteindre ses objectifs. Ils offrent
-          habituellement des avantages financiers, matériels et autres pour
-          soutenir la mission de l&#39;organisation.
+          VOYAGO propose une large sélection de destinations à travers le monde
+          pour répondre aux besoins et aux souhaits de nos clients. Nous avons
+          des experts en voyage pour des destinations populaires comme les îles
+          tropicales, les villes européennes, les parcs nationaux américains et
+          bien plus encore. Nous travaillons avec les meilleures entreprises
+          locales pour vous offrir des options de voyage uniques et
+          personnalisées pour chaque destination.
         </p>
       </div>
       <Height height={300}>
