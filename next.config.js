@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+   images: {
+    unoptimized: true
+  },
   reactStrictMode: false,
   webpack: (cfg) => {
     cfg.module.rules.push(
@@ -7,6 +10,7 @@ const nextConfig = {
         test: /\.md$/,
         loader: 'frontmatter-markdown-loader',
         options: { mode: ['react-component'] }
+        
       }
     )
     return cfg;
